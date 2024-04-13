@@ -5,8 +5,6 @@ type ContactFormProps = {
   setMessageSent: (value: boolean) => void;
 }
 
-const captchaSiteKey = import.meta.env.VITE_CAPTCHA;
-
 export default function ContactForm({ setMessageSent }: ContactFormProps) {
   const form = useRef<HTMLFormElement>(null);
 
