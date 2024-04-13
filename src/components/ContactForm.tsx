@@ -5,6 +5,7 @@ type ContactFormProps = {
   setMessageSent: (value: boolean) => void;
 }
 
+const captchaSiteKey = import.meta.env.VITE_CAPTCHA;
 
 export default function ContactForm({ setMessageSent }: ContactFormProps) {
   const form = useRef<HTMLFormElement>(null);
@@ -19,7 +20,7 @@ export default function ContactForm({ setMessageSent }: ContactFormProps) {
           `${import.meta.env.VITE_TEMPLATE_ID}`,
           form.current,
           {
-            publicKey: `${import.meta.env.VITE_PUBLIC_KEY}`,
+            publicKey: `${import.meta.env.VITE_EMAIL}`,
           }
         )
         .then(
@@ -59,6 +60,7 @@ export default function ContactForm({ setMessageSent }: ContactFormProps) {
           <textarea name="message" rows={6} required/>
         </div>
       </div>
+      <div className="g-recaptcha" data-sitekey={`${import.meta.env.VITE_CAPTCHA}`}></div>
       <input type="submit" value="SEND" className="bg-[#2d203e] text-white self-center px-[2rem] py-[0.5rem] hover:bg-[#3d2b54] active:bg-[#2d203e]" />
     </form>
   );
