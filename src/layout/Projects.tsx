@@ -1,12 +1,6 @@
-import { useContext } from "react";
-import { ThemeContext } from "../App";
-import toolio from "../assets/Toolio.webp";
-import snake from "../assets/Sneaky_snake.webp";
-import Badge from "../components/Badge";
 import ProjectItem from "../components/ProjectItem";
 
 export default function Projects() {
-  const { isDarkMode } = useContext(ThemeContext);
 
   return (
     <section id="projects-section"
