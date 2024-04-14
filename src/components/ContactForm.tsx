@@ -1,15 +1,48 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
 
 type ContactFormProps = {
   setMessageSent: (value: boolean) => void;
 }
 
+
 export default function ContactForm({ setMessageSent }: ContactFormProps) {
   const form = useRef<HTMLFormElement>(null);
 
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://www.google.com/recaptcha/api.js';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+  }, []);
+
   const sendEmail = (e: React.FormEvent) => {
+
     e.preventDefault();
+
+    // Installed npm install --save-dev @types/grecaptcha 
+    const captchaResponse = grecaptcha.getResponse()
+
+    if(!captchaResponse){
+      throw new Error('Captcha not verified')
+    }
+
+    fetch('http://localhost:8000/captcha-verify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({captchaResponse})
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.captchaSuccess){
+        console.log('Captcha verified')
+      } else {
+        console.error('Captcha not verified')
+    }})
+    .catch(err => console.error(err))
 
     if (form.current) {
       emailjs
