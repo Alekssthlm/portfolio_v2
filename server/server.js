@@ -4,7 +4,12 @@ const PORT = process.env.PORT ?? 8000;
 const cors = require('cors');
 require('dotenv').config()  
 
-app.use(cors())
+const corsOptions = {
+  origin: ['https://www.alexanderheras.com', 'https://alexanderheras.com'],
+  optionsSuccessStatus: 200
+}
+
+app.use(cors(corsOptions))
 app.use(express.json())
 
 app.post('/captcha-verify', (req, res) => {
