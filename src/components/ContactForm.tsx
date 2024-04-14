@@ -8,6 +8,7 @@ type ContactFormProps = {
 
 export default function ContactForm({ setMessageSent }: ContactFormProps) {
   const form = useRef<HTMLFormElement>(null);
+  const [captchaError, setCaptchaError] = React.useState(false);
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -18,15 +19,10 @@ export default function ContactForm({ setMessageSent }: ContactFormProps) {
   }, []);
 
   const sendEmail = (e: React.FormEvent) => {
-
     e.preventDefault();
 
     // Installed npm install --save-dev @types/grecaptcha 
     const captchaResponse = grecaptcha.getResponse()
-
-    if(!captchaResponse){
-      throw new Error('Captcha not verified')
-    }
 
     fetch('https://portfolio-v2-server-omega.vercel.app/captcha-verify', {
       method: 'POST',
@@ -39,34 +35,38 @@ export default function ContactForm({ setMessageSent }: ContactFormProps) {
     .then(data => {
       if(data.captchaSuccess){
         console.log('Captcha verified')
+        setCaptchaError(false)
+
+        // code to send email if captcha is verified
+        if (form.current) {
+          emailjs
+            .sendForm(
+              `${import.meta.env.VITE_SERVICE_ID}`,
+              `${import.meta.env.VITE_TEMPLATE_ID}`,
+              form.current,
+              {
+                publicKey: `${import.meta.env.VITE_EMAIL}`,
+              }
+            )
+            .then(
+              () => {
+                console.log("SUCCESS!");
+                setMessageSent(true);
+                if (form.current) {
+                  form.current.reset();
+                }
+              },
+              (error) => {
+                console.log("FAILED...", error.text);
+              }
+            );
+        }
+        
       } else {
+        setCaptchaError(true)
         console.error('Captcha not verified')
     }})
     .catch(err => console.error(err))
-
-    if (form.current) {
-      emailjs
-        .sendForm(
-          `${import.meta.env.VITE_SERVICE_ID}`,
-          `${import.meta.env.VITE_TEMPLATE_ID}`,
-          form.current,
-          {
-            publicKey: `${import.meta.env.VITE_EMAIL}`,
-          }
-        )
-        .then(
-          () => {
-            console.log("SUCCESS!");
-            setMessageSent(true);
-            if (form.current) {
-              form.current.reset();
-            }
-          },
-          (error) => {
-            console.log("FAILED...", error.text);
-          }
-        );
-    }
   };
 
   return (
@@ -92,6 +92,7 @@ export default function ContactForm({ setMessageSent }: ContactFormProps) {
         </div>
       </div>
       <div className="g-recaptcha" data-sitekey={`${import.meta.env.VITE_CAPTCHA}`}></div>
+      {captchaError && <p className="text-white bg-red-500 rounded-full font-semibold">Please verify the check box!</p>}
       <input type="submit" value="SEND" className="bg-[#2d203e] text-white self-center px-[2rem] py-[0.5rem] hover:bg-[#3d2b54] active:bg-[#2d203e]" />
     </form>
   );

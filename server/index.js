@@ -24,7 +24,6 @@ app.post('/captcha-verify', (req, res) => {
   })
   .then(res => res.json())
   .then(data => {
-    console.log(data)
     if(data.success) {
       res.status(200).json({ captchaSuccess: true })
     } else {
