@@ -34,14 +34,14 @@ export default function Header() {
 
   const navigation = [
     { name: "Introduction", href: "#hero-section" },
-    { name: "Stack", href: "#stack-section" },
     { name: "Projects", href: "#projects-section" },
+    { name: "Stack", href: "#stack-section" },
     { name: "Contact", href: "#contact-section" },
   ];
 
   return (
     <header
-      className={` fixed w-lvw top-0 z-[99] h-20 flex mx-auto md:px-4 ${
+      className={` fixed w-lvw top-0 z-[99] h-20 flex mx-auto md:px-4  ${
         isDarkMode ? "bg-[#262626]" : "bg-white"
       }`}
     >
@@ -70,12 +70,12 @@ export default function Header() {
             />
           </button>
         </div>
-        <div className="hidden md:flex md:gap-x-12">
+        <div className="hidden md:flex md:gap-x-16">
           {navigation.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6"
+              className="text-lg font-semibold leading-6"
             >
               {item.name}
             </a>
