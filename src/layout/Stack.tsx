@@ -1,9 +1,7 @@
-import { useState } from "react";
-import { images } from "../stackData.ts";
+import { stackData } from "../stackData.ts";
 import StackTile from "../components/StackTile.tsx";
 
 export default function Stack() {
-  const [showModal, setShowModal] = useState(false);
 
   return (
     <section id="stack-section"
@@ -15,18 +13,13 @@ export default function Stack() {
         </div>
         <div className="max-w-[80rem] m-auto flex flex-col items-center md:gap-4 w-full">
           <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 gap-4 lg:gap-4">
-            {images.map((image) => {
+            {stackData.map((data) => {
               return (
-                <StackTile name={image.name} image={image.src} key={image.id} setShowModal={setShowModal}/>
+                <StackTile name={data.name} image={data.src} key={data.id}/>
               );
             })}
           </div>
-          {showModal && (
-            <div className="fixed top-0 left-0 right-0 bottom-0">
-            <div className="fixed h-full w-full bg-[#3232329b]" onClick={() => setShowModal(false)}></div>
-            <div className="absolute top-0 left-0">hello</div>
-            </div>
-          )}
+          
         </div>
       </div>
     </section>

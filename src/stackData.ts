@@ -11,8 +11,8 @@ import swagger from "./assets/swagger.png";
 import postgres from "./assets/postgres.png";
 import github from "./assets/github.png";
 
-export const images = [
-  { name: "HTML 5", src: html, id: 1 },
+export const stackData = [
+  { name: "HTML 5", src: html, id: 1},
   { name: "CSS 3", src: css, id: 2 },
   { name: "Javascript", src: javascript, id: 3 },
   { name: "React", src: react, id: 4 },
