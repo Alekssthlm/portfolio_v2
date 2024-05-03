@@ -41,8 +41,8 @@ function App() {
         <Header />
         <main>
           <Hero />
-          <Stack />
           <Projects />
+          <Stack />
           <Contact />
         </main>
       </SiteLayout>

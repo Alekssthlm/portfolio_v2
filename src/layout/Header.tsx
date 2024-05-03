@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { ThemeContext } from "../App";
-import { Dialog } from "@headlessui/react";
+import { AnimatePresence, motion } from "framer-motion"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import SwitchTheme from "./SwitchTheme";
 
@@ -89,24 +89,25 @@ export default function Header() {
           <SwitchTheme />
         </div>
       </nav>
-      <Dialog
-        as="div"
-        className="lg:hidden "
-        open={mobileMenuOpen}
-        onClose={setMobileMenuOpen}
-      >
-        <div className="fixed inset-0 z-50" />
-        <Dialog.Panel
+
+      <AnimatePresence>
+      {mobileMenuOpen &&
+      <motion.div  initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+        <div
           className={`${
             isDarkMode
               ? "bg-[var(--primary-dark)]"
               : "bg-[var(--primary-light)]"
-          } fixed inset-y-0 right-0 z-50 w-full overflow-y-auto pt-7 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 flex flex-col justify-between`}
+          } fixed inset-y-0 right-0 z-50 w-full overflow-y-auto pt-4 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 flex flex-col justify-between`}
         >
           <div>
             <div className="flex items-center justify-between mb-8 px-4">
-              <a href="#" className="-m-1.5 p-1.5">
-                <span>Alexander</span>
+              <a href="#" >
+              <div className="relative border-solid border-black">
+            <span className="font-bold text-[2rem] ">A</span>
+            <span className="font-bold text-[2rem] absolute top-[20%] left-[100%]">H<span className="text-[#C77D01]">{"."}</span></span>
+            </div>
               </a>
 
               <button
@@ -114,8 +115,7 @@ export default function Header() {
                 className="-m-2.5 rounded-md p-2.5"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <span className="sr-only">Close menu</span>
-                <XMarkIcon className="h-6 w-6 text-white" aria-hidden="true" />
+                <XMarkIcon className="h-6 w-6 text-white" role="button" aria-label="Close" />
               </button>
             </div>
 
@@ -150,8 +150,9 @@ export default function Header() {
               <SwitchTheme />
             </div>
           </div>
-        </Dialog.Panel>
-      </Dialog>
+        </div>
+      </motion.div>}
+      </AnimatePresence>
     </header>
   );
 }

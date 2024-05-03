@@ -28,11 +28,11 @@ export default function Hero() {
           </h2>
           <div className="mx-auto md:mx-0 w-[4rem] lg:w-[8rem] h-1 bg-[var(--accent-yellow)]"></div>
           <div className="mb-[2rem] text-[1rem] lg:mb-[1rem] font-bold lg:text-[1.3rem]">
-            <a href="https://www.linkedin.com/in/alexander-heras/" tabIndex={0}>
+            <a href="https://www.linkedin.com/in/alexander-heras/" target="_blank" tabIndex={0}>
               LinkedIn
             </a>{" "}
             <span>|</span>{" "}
-            <a href="https://github.com/Alekssthlm" tabIndex={0}>
+            <a href="https://github.com/Alekssthlm" target="_blank" tabIndex={0}>
               GitHub
             </a>
           </div>

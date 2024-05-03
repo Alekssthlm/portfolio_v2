@@ -12,8 +12,8 @@ export default function Contact() {
         isDarkMode ? "bg-[#3c3c3c]" : "bg-[#2d203e]"
       }`}
     >
-      <div className="max-w-[80rem] m-auto flex flex-col items-center md:gap-4">
-        <h2 className="text-[15vmin] font-bold text-white">
+      <div className="max-w-[80rem] gap-2 m-auto flex flex-col items-center md:gap-4">
+        <h2 className="text-[3rem] md:text-[5rem] font-bold text-white">
           CONTACT<span className="text-[#C77D01]">{"."}</span>
         </h2>
         <p className="text-white md:text-justify text-[1.2rem] md:max-w-[40rem] lg:max-w-[50rem]">
