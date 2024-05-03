@@ -115,7 +115,7 @@ export default function Header() {
                 className="-m-2.5 rounded-md p-2.5"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <XMarkIcon className="h-6 w-6 text-white" role="button" aria-label="Close" />
+                <XMarkIcon className={`h-6 w-6 ${isDarkMode ? "text-white" : "text-black"}`} role="button" aria-label="Close" />
               </button>
             </div>
 
