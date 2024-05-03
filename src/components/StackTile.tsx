@@ -1,12 +1,11 @@
 type StackTileProps = {
   name: string;
   image: string;
-  setShowModal: (value: boolean) => void;
 };
 
 export default function StackTile(props: StackTileProps) {
   return (
-    <div className="w-[10rem] h-[10rem] p-4 text-white font-bold text-[1.5rem] flex flex-col gap-2 items-center hover:scale-[1.10] transition-all ease-in-out duration-300 bg-[#515151] shadow-lg shadow-[#000000]" onClick={() => props.setShowModal(true)}>
+    <div className="w-[10rem] h-[10rem] p-4 text-white font-bold text-[1.5rem] flex flex-col gap-2 items-center hover:scale-[1.10] transition-all ease-in-out duration-300 bg-[#515151] shadow-lg shadow-[#000000]" >
       <img
         className="w-[4rem] lg:w-[6rem]"
         src={props.image}
