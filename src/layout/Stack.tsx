@@ -21,12 +21,12 @@ export default function Stack() {
               );
             })}
           </div>
-          {/* {showModal && (
+          {showModal && (
             <div className="fixed top-0 left-0 right-0 bottom-0">
             <div className="fixed h-full w-full bg-[#3232329b]" onClick={() => setShowModal(false)}></div>
             <div className="absolute top-0 left-0">hello</div>
             </div>
-          )} */}
+          )}
         </div>
       </div>
     </section>
