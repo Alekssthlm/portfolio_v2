@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { images } from "../stackData.ts";
 import StackTile from "../components/StackTile.tsx";
 
