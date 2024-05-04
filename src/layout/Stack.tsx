@@ -15,11 +15,11 @@ export default function Stack() {
           <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 gap-4 lg:gap-4">
             {stackData.map((data) => {
               return (
+
                 <StackTile name={data.name} image={data.src} key={data.id}/>
               );
             })}
           </div>
-          
         </div>
       </div>
     </section>
