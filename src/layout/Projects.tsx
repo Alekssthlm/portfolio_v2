@@ -17,6 +17,7 @@ export default function Projects() {
         </div>
 
         <div className="mx-auto grid lg:grid-cols-2 gap-8 place-items-center">
+        <ProjectItem id={"ksss"} badges={["Next.js", "Sanity CMS", "react", "tailwind"]} />
         <ProjectItem id={"tick"} badges={["react", "tailwind", "node.js", "swagger", "github actions", "CI/CD", "postgresql", "jwt"]} />
         <ProjectItem id={"toolio"} badges={["javascript", "react", "css3", "api", "team project"]} />
         <ProjectItem id={"snake"} badges={["html5", "css3", "javascript", "api", "node.js"]} />
