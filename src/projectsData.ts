@@ -5,7 +5,6 @@ import prisoner from "./assets/free_prisoner.webp"
 import ksss from "./assets/KSSS.webp"
 
 export const projectsData = [
-  
   { name: "TOOLIO PRODUCTIVITY TOOLS", src: toolio, id: "toolio", url: "https://toolio-six.vercel.app/"},
   { name: "KSSS HISTORY SITE", src: ksss, id: "ksss", url: "https://ksss-history-site.vercel.app/"},
   { name: "SNEAKY SNAKE", src: snake, id: "snake", url: "https://sneaky-snake-client.vercel.app/"},
